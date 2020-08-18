@@ -1,6 +1,27 @@
+
+.product-image img{
+	width: 300px;
+	height: 300px;
+}
+
+.product-color{
+	display: flex;
+}
+.color-box{
+	width: 30px;
+	height: 30px;
+	margin: 10px;
+	border: 2px solid #000;
+	border-radius: 50%;
+}
+
 .cart p{
 	width: 50%;
 	text-align: center; 
 	padding: .5em;
 	border: 1px solid #e1e1e1;
+}
+
+.disableButton{
+	background-color: #d8d8d8;
 }

@@ -13,12 +13,12 @@
 		<div id="app">
 			<div class="container product">
 				<div class="row mt-5">
-					<div class="col-sm-4 col-md-4 col-lg-4">
+					<div class="col-sm-4 col-md-12 col-lg-4">
 						<div class="product-image">
 							<img :src="image" alt="" />
 						</div>
 					</div>
-					<div class="col-sm-4 col-md-4 col-lg-6">
+					<div class="col-sm-4 col-md-8 col-lg-6">
 						<div class="product-info">
 							<h2>{{ product }}</h2>
 							<p v-if="inventory > 10">In Stock</p>
@@ -28,12 +28,17 @@
 							<ul>
 								<li v-for="detail in details">{{ detail }}</li>
 							</ul>
-							
-							<div v-for="variant in variants" :key="variant.variantId">
-								<p>{{ variant.variantType }}</p>
+							<div class="product-color">
+								<div v-for="variant in variants" 
+								 :key="variant.variantId" 
+								 :style="{backgroundColor: variant.variantType}"
+								 @mouseover="updateProduct(variant.variantImage)"
+								 class="color-box">
+								</div>
 							</div>
 							
-							<button v-on:click="addToCart" class="btn btn-primary "> Add to Cart </button>
+							<button @click="addToCart" class="btn btn-primary "> Add to Cart </button>
+							<button @click="removeFromCart" class="btn btn-danger "> Remove from Cart </button>
 						</div>
 					</div>
 					<div class="col-sm-4 col-md-4 col-lg-2">

@@ -8,17 +8,17 @@ var app = new Vue ({
 		variants:[
 			{
 				variantId: 001,
-				variantType: "green",
+				variantType: "Green",
 				variantImage: 'images/green-omega.jpg'
 			},
 			{
 				variantId: 002,
-				variantType: "blue",
+				variantType: "Blue",
 				variantImage: 'images/blue-omega.jpg'
 			},
 			{
 				variantId: 003,
-				variantType: "yellow",
+				variantType: "Yellow",
 				variantImage: 'images/yellow-omega.png'
 			}
 		],
@@ -27,6 +27,14 @@ var app = new Vue ({
 	methods:{
 		addToCart: function(){
 			this.cart += 1
+		},
+		removeFromCart: function(){
+			this.cart -= 1
+			if(this.cart < 0)
+				this.cart = 0
+		},
+		updateProduct: function(variantImage){
+			this.image = variantImage
 		}
 	}
 })
