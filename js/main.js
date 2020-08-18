@@ -1,6 +1,7 @@
 var app = new Vue ({
 	el:'#app',
 	data: {
-		product: 'Socks'
+		product: 'Emegovitals Siberian Health',
+		image: './assets/img/green-omega.jpg'
 	}
 })
