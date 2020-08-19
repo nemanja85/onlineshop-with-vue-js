@@ -1,3 +1,13 @@
+/****  Main CSS File in the Project    ***/
+
+body {
+	font-family: Lato;
+	font-style: normal;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 1.2em;
+	letter-spacing: 0.05em;
+}
 
 .product-image img{
 	width: 300px;
