@@ -4,6 +4,7 @@ var app = new Vue ({
 		product: 'Emegovitals Siberian Health',
 		image: 'images/green-omega.jpg',
 		inventory: 100,
+		inStock: true,
 		details: ["Complex with omega-3 acids"," Vitamin E","Vitamin D"],
 		variants:[
 			{
@@ -35,6 +36,8 @@ var app = new Vue ({
 		},
 		updateProduct: function(variantImage){
 			this.image = variantImage
+			if(this.inventory == 0)
+				this.inStock = false
 		}
 	}
 })

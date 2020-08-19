@@ -4,23 +4,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86" />
 		<title>Online Product App</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-		<link rel="stylesheet" href="css/fontawesome.min.css" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
+		<link rel="stylesheet" type="text/css" href="css/fontawesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	</head>
 	<body>
-		<nav class="navbar navbar-dark bg-dark">
-		  <a class="navbar-brand" href="#">Navbar</a>
-		</nav>
 		<div id="app">
+			<nav class="navbar navbar-dark bg-dark">
+				<div class="cart">
+					<p class="float-right"><i class="fas fa-shopping-cart"></i> {{cart}}</p>
+				</div>
+			</nav>
 			<div class="container product">
 				<div class="row mt-5">
-					<div class="col-sm-4 col-md-12 col-lg-4">
+					<div class="col-sm-6 col-md-6 col-lg-4">
 						<div class="product-image">
 							<img :src="image" alt="" />
 						</div>
 					</div>
-					<div class="col-sm-4 col-md-8 col-lg-6">
+					<div class="col-sm-6 col-md-6 col-lg-8">
 						<div class="product-info">
 							<h2>{{ product }}</h2>
 							<p v-if="inventory > 10">In Stock</p>
@@ -39,13 +42,14 @@
 								</div>
 							</div>
 							
-							<button @click="addToCart" class="btn btn-primary "> Add to Cart </button>
-							<button @click="removeFromCart" class="btn btn-danger "> Remove from Cart </button>
-						</div>
-					</div>
-					<div class="col-sm-4 col-md-4 col-lg-2">
-						<div class="cart">
-							<p>Cart ({{cart}})</p>
+							<button @click="addToCart" 
+									:disabled="!inStock"
+									:class="{disabledButton: !inStock}"
+									class="btn btn-primary "> Add to Cart </button>
+							<button @click="removeFromCart" 
+									:disabled="!inStock" 
+									:class="{disabledButton: !inStock}"
+									class="btn btn-danger "> Remove from Cart </button>
 						</div>
 					</div>
 				</div>

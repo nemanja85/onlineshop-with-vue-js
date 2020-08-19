@@ -25,13 +25,25 @@ body {
 	border-radius: 50%;
 }
 
-.cart p{
-	width: 50%;
-	text-align: center; 
-	padding: .5em;
-	border: 1px solid #e1e1e1;
+.cart{
+	width: 100%;
+	font-weight: 700;
+	text-align: center;
+	color: #fff;	
 }
 
-.disableButton{
-	background-color: #d8d8d8;
+.cart p{
+	padding: 1em;
+	border: 1px solid #fff;
+}
+
+.cart p:hover{
+	color: #000;
+	background-color: #fff;
+}
+
+.disabledButton{
+	color: #000 !important;
+	background-color: #d8d8d8 !important;
+	border-color: #d8d8d8 !important;
 }
