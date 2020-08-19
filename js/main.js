@@ -1,31 +1,33 @@
 var app = new Vue ({
 	el:'#app',
 	data: {
-		product: 'Emegovitals Siberian Health',
-		image: 'images/green-omega.jpg',
-		inventory: 100,
-		inStock: true,
+		product: 'Emegovitals',
+		brand: 'Siberian Health',
+		selectedVariant: 0,
 		details: ["Complex with omega-3 acids"," Vitamin E","Vitamin D"],
 		variants:[
 			{
 				variantId: 001,
 				variantType: "Green",
-				variantImage: 'images/green-omega.jpg'
+				variantImage: 'images/green-omega.jpg',
+				variantQuantity: 250
 			},
 			{
 				variantId: 002,
 				variantType: "Blue",
-				variantImage: 'images/blue-omega.jpg'
+				variantImage: 'images/blue-omega.jpg',
+				variantQuantity: 8
 			},
 			{
 				variantId: 003,
 				variantType: "Yellow",
-				variantImage: 'images/yellow-omega.png'
+				variantImage: 'images/yellow-omega.png',
+				variantQuantity: 0
 			}
 		],
 		cart:0
 	},
-	methods:{
+	methods: {
 		addToCart: function(){
 			this.cart += 1
 		},
@@ -34,10 +36,19 @@ var app = new Vue ({
 			if(this.cart < 0)
 				this.cart = 0
 		},
-		updateProduct: function(variantImage){
-			this.image = variantImage
-			if(this.inventory == 0)
-				this.inStock = false
+		updateProduct: function(index){
+			this.selectedVariant = index
+		}
+	},
+	computed: {
+		title() {
+			return this.product + ' ' + this.brand
+		},
+		image(){
+			return this.variants[this.selectedVariant].variantImage
+		},
+		inStock(){
+			return this.variants[this.selectedVariant].variantQuantity
 		}
 	}
 })
