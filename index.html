@@ -11,49 +11,7 @@
 	</head>
 	<body>
 		<div id="app">
-			<nav class="navbar navbar-dark bg-dark">
-				<div class="cart">
-					<p class="float-right"><i class="fas fa-shopping-cart"></i> {{cart}}</p>
-				</div>
-			</nav>
-			<div class="container product">
-				<div class="row mt-5">
-					<div class="col-sm-6 col-md-6 col-lg-4">
-						<div class="product-image">
-							<img :src="image" alt="" />
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-6 col-lg-8">
-						<div class="product-info">
-							<h2>{{ title }}</h2>
-							<p v-if="selectedVariant > 10">In Stock</p>
-							<p v-else-if="selectedVariant < 10 && selectedVariant > 0">Almost sold out!</p>
-							<p v-else>Out Stock</p>
-							
-							<ul>
-								<li v-for="detail in details">{{ detail }}</li>
-							</ul>
-							<div class="product-color">
-								<div v-for="(variant, index) in variants" 
-								 :key="variant.variantId" 
-								 :style="{backgroundColor: variant.variantType}"
-								 @mouseover="updateProduct(index)"
-								 class="color-box">
-								</div>
-							</div>
-							
-							<button @click="addToCart" 
-									:disabled="!inStock"
-									:class="{disabledButton: !inStock}"
-									class="btn btn-primary "> Add to Cart </button>
-							<button @click="removeFromCart" 
-									:disabled="!inStock" 
-									:class="{disabledButton: !inStock}"
-									class="btn btn-danger "> Remove from Cart </button>
-						</div>
-					</div>
-				</div>
-			</div>
+			<product></product>
 		</div>
 		
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
