@@ -7,11 +7,7 @@ Vue.component('product',{
 	},
 	template: `
 	<div class="product">
-				<nav class="navbar navbar-dark bg-dark">
-					<div class="cart">
-						<p class="float-right"><i class="fas fa-shopping-cart"></i> {{cart}}</p>
-					</div>
-				</nav>
+				
 				<div class="container">
 					<div class="row mt-5">
 						<div class="col-sm-6 col-md-6 col-lg-4">
@@ -78,20 +74,17 @@ Vue.component('product',{
 				variantImage: 'images/yellow-omega.png',
 				variantQuantity: 0
 			}
-		],
-		cart:0
+		  ]
 		}
 	},
 	methods: {
-		addToCart: function(){
-			this.cart += 1
+		addToCart(){
+			this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
 		},
-		removeFromCart: function(){
-			this.cart -= 1
-			if(this.cart < 0)
-				this.cart = 0
+		removeFromCart(){
+			this.$emit('remove-from-cart', this.variants[this.selectedVariant].variantId)
 		},
-		updateProduct: function(index){
+		updateProduct(index){
 			this.selectedVariant = index
 		}
 	},
@@ -118,6 +111,15 @@ Vue.component('product',{
 var app = new Vue ({
 	el:'#app',
 	data:{
-		premium: true
+		premium: true,
+		cart:[]
+	},
+	methods: {
+		addProduct(id){
+			this.cart.push(id)
+		},
+		removeProduct(id){
+			this.cart.pop(id)
+		}
 	}
 })
