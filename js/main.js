@@ -51,7 +51,7 @@ Vue.component('product',{
 	`,
 	data(){
 		return {
-		product: 'Emegovitals',
+		product: 'Trimegavitals',
 		brand: 'Siberian Health',
 		selectedVariant: 0,
 		details: ["Complex with omega-3 acids"," Vitamin E","Vitamin D"],
